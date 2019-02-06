@@ -1,0 +1,13 @@
+---
+- name: Check if certificate already exists.
+  stat:
+    path: /etc/letsencrypt/live/{{ cert_item.domains | first | replace('*.', '') }}/cert.pem
+  register: letsencrypt_cert
+
+- name: Override certbot command variable to use webroot
+  include_vars: "webroot.yml"
+  when: not letsencrypt_cert.stat.exists
+
+- name: Generate new certificate if one doesn't exist.
+  command: "{{ certbot_create_command }}"
+  when: not letsencrypt_cert.stat.exists

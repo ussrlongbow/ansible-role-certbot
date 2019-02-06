@@ -1,0 +1,7 @@
+---
+certbot_create_command: >-
+  {{ certbot_script }} certonly --webroot
+  --webroot-path {{ certbot_webroot }}
+  --noninteractive --agree-tos
+  --email {{ cert_item.email | default(certbot_admin_email) }}
+  -d {{ cert_item.domains | join(',') }}
