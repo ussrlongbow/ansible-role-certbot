@@ -5,3 +5,4 @@ certbot_create_command: >-
   --noninteractive --agree-tos
   --email {{ cert_item.email | default(certbot_admin_email) }}
   -d {{ cert_item.domains | join(',') }}
+
