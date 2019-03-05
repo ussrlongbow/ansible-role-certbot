@@ -3,6 +3,7 @@ dependencies: []
 
 galaxy_info:
   author: geerlingguy
+  role_name: certbot
   description: "Installs and configures Certbot (for Let's Encrypt)."
   company: "Midwestern Mac, LLC"
   license: "license (BSD, MIT)"
